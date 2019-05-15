@@ -18,4 +18,4 @@ WORKDIR="$PWD"
 
 set -x
 cd $LFS/sources
-sudo -u lfs -s $WORKDIR/build_temporary.sh
+sudo -u lfs $WORKDIR/build_temporary.sh
