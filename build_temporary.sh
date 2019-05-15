@@ -223,12 +223,13 @@ echo "Installing gcc-8.2.0 - second pass"
 
 trace_on
 
-cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
-  `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/include-fixed/limits.h
-
 
 tar -xvf gcc-8.2.0.tar.xz
 pushd gcc-8.2.0
+
+cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
+  `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/include-fixed/limits.h
+
 tar -xf ../mpfr-4.0.2.tar.xz
 mv -v mpfr-4.0.2 mpfr
 tar -xf ../gmp-6.1.2.tar.xz
