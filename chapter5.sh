@@ -14,5 +14,8 @@ echo ""
 echo ""
 echo "Logging in the unprivileged lfs user and building the temporary tools."
 
+WORKDIR="$PWD"
+
+set -x
 cd $LFS/sources
-sudo -u lfs -s build_temporary.sh
+sudo -u lfs -s $WORKDIR/build_temporary.sh

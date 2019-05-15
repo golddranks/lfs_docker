@@ -11,8 +11,8 @@ echo "Installing binutils-2.32 - first pass"
 
 trace_on
 
-tar -xvf binutils-2.32
-cd binutils-2.32
+tar -xvf binutils-2.32.tar.xz
+pushd binutils-2.32
 mkdir -v build
 cd       build
 ../configure --prefix=/tools            \
@@ -26,7 +26,7 @@ case $(uname -m) in
   x86_64) mkdir -v /tools/lib && ln -sv lib /tools/lib64 ;;
 esac
 make install
-cd ..
+popd
 rm -rf binutils-2.32
 
 trace_off
@@ -38,8 +38,8 @@ echo "Installing gcc-8.2.0 - first pass"
 
 trace_on
 
-tar -xvf gcc-8.2.0
-cd gcc-8.2.0
+tar -xvf gcc-8.2.0.tar.xz
+pushd gcc-8.2.0
 tar -xf ../mpfr-4.0.2.tar.xz
 mv -v mpfr-4.0.2 mpfr
 tar -xf ../gmp-6.1.2.tar.xz
@@ -96,7 +96,7 @@ cd       build
 
 make
 make install
-cd ..
+popd
 rm -rf gcc-8.2.0
 
 trace_off
@@ -109,14 +109,14 @@ echo "Installing linux-4.20.12 API Headers"
 trace_on
 
 tar -xvf linux-4.20.12.tar.xz
-cd linux-4.20.12.tar.xz
+pushd linux-4.20.12
 make mrproper
 
 make INSTALL_HDR_PATH=dest headers_install
 cp -rv dest/include/* /tools/include
 
-cd ..
-rm -rf linux-4.20.12.tar.xz
+popd
+rm -rf linux-4.20.12
 
 trace_off
 
@@ -128,7 +128,7 @@ echo "Installing glibc-2.29"
 trace_on
 
 tar -xvf glibc-2.29.tar.xz
-cd glibc-2.29.tar.xz
+pushd glibc-2.29
 
 mkdir -v build
 cd       build
@@ -148,8 +148,8 @@ $LFS_TGT-gcc dummy.c
 readelf -l a.out | grep ': /tools' | grep "[Requesting program interpreter: /tools/lib64/ld-linux-x86-64.so.2]"
 rm -v dummy.c a.out
 
-cd ..
-rm -rf glibc-2.29.tar.xz
+popd
+rm -rf glibc-2.29
 
 trace_off
 
@@ -161,7 +161,7 @@ echo "Installing libstdc++"
 trace_on
 
 tar -xvf gcc-8.2.0.tar.xz
-cd gcc-8.2.0.tar.xz
+pushd gcc-8.2.0
 
 mkdir -v build
 cd       build
@@ -178,8 +178,8 @@ cd       build
 make
 make install
 
-cd ..
-rm -rf gcc-8.2.0.tar.xz
+popd
+rm -rf gcc-8.2.0
 
 trace_off
 
@@ -190,8 +190,8 @@ echo "Installing binutils-2.32 - second pass"
 
 trace_on
 
-tar -xvf binutils-2.32
-cd binutils-2.32
+tar -xvf binutils-2.32.tar.xz
+pushd binutils-2.32
 
 mkdir -v build
 cd       build
@@ -208,7 +208,7 @@ make -C ld clean
 make -C ld LIB_PATH=/usr/lib:/lib
 cp -v ld/ld-new /tools/bin
 
-cd ..
+popd
 rm -rf binutils-2.32
 
 trace_off
@@ -224,8 +224,8 @@ cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
   `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/include-fixed/limits.h
 
 
-tar -xvf gcc-8.2.0
-cd gcc-8.2.0
+tar -xvf gcc-8.2.0.tar.xz
+pushd gcc-8.2.0
 tar -xf ../mpfr-4.0.2.tar.xz
 mv -v mpfr-4.0.2 mpfr
 tar -xf ../gmp-6.1.2.tar.xz
@@ -280,7 +280,7 @@ cc dummy.c
 readelf -l a.out | grep ': /tools' | grep "[Requesting program interpreter: /tools/lib64/ld-linux-x86-64.so.2]"
 rm -v dummy.c a.out
 
-cd ..
+popd
 rm -rf gcc-8.2.0
 
 trace_off
