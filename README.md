@@ -7,7 +7,7 @@ This is a docker image that makes building Linux From Scratch easy.
 Linux From Scratch (LFS) is a working Linux-based operating system,
 hand-build from sources, by you.
 
-It's purpose is to be a minimal and self-contained Linux system;
+Its purpose is to be a minimal and self-contained Linux system;
 enough so that the user can throughly understand which components
 the system consists of.
 
@@ -29,7 +29,7 @@ environment for the LFS itself.
 4. Chroot to the minimal system. The Linux kernel is still the one of the host system,
 but all the tools and libraries of the host system are made unavailable by the chroot.
 We do this to ensure reproducibility; both the tools we use to build the LFS system,
-and the system itself are build from source by us.
+and the system itself are built from source by us.
 5. Using the minimal toolset, we build and install all the programs and libraries we need to build a working Linux system.
 6. After building and installing, we configure the system.
 7. Finally, we build and install the Linux kernel, and make the system bootable.
@@ -50,7 +50,7 @@ this understanding. Some build steps consist of building the same packages
 twice or even thrice.
 
 The steps 2 - 3 of building the minimal system provide some insight to
-cross-compiling, bootstrapping and the GCC toolchain and it's dependencies,
+cross-compiling, bootstrapping and the GCC toolchain and its dependencies,
 but the most important steps to get understanding about a minimal Linux system
 are arguably the steps from 5 onwards.
 
@@ -71,6 +71,10 @@ Run this to build the Dockerfile and enter the host environment.
 docker build --tag lfs .
 docker run -it --privileged -v $PWD:/workdir lfs
 ```
+The image needs to be run as privileged, because mounting doesn't work inside
+the container without that capability.
+We need to mount the LFS system image during the preparation steps.
+
 
 At your choice, you can automatically perform the steps in the LFS book by
 running script files that correspond to the chapters in the book. At least
@@ -84,5 +88,5 @@ filesystem used for the LFS installation.)
 ```
 
 Once you have done everything through chapters 2 to 5, you are on your own;
-follow the instructions here:
+all that is left is to build the LFS system itself. Follow the instructions here:
 http://www.linuxfromscratch.org/lfs/view/stable/chapter06/introduction.html
