@@ -76,7 +76,7 @@ the container without that capability.
 We need to mount the LFS system image during the preparation steps.
 
 The book recommends you to check the versions of the tools of the host system.
-This Docker file has expected versions,
+This Docker image has the expected versions,
 but you can verify this yourself by running:
 ```
 ./version-check.sh
