@@ -56,7 +56,7 @@ COPY *.sh /workdir/
 
 # Run the docker image with commands:
 # docker build --tag lfs .
-# docker run -it --privileged -v $PWD:/workdir lfs
+# docker run -it --privileged lfs
 #
 # The --privileged flag is needed for mount to work inside the container
 #

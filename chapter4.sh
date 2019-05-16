@@ -33,7 +33,7 @@ echo "Creating environment settings for the new user."
 echo ""
 
 trace_on
-sudo -u lfs -s <<EOF2
+sudo -u lfs -s <<'EOF2'
 
 cat > ~/.bash_profile << "EOF"
 exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash

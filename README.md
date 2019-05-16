@@ -69,8 +69,9 @@ Run this to build the Dockerfile and enter the host environment.
 
 ```
 docker build --tag lfs .
-docker run -it --privileged -v $PWD:/workdir lfs
+docker run -it --privileged lfs
 ```
+
 The image needs to be run as privileged, because mounting doesn't work inside
 the container without that capability.
 We need to mount the LFS system image during the preparation steps.
