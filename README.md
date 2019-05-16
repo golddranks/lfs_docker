@@ -75,6 +75,12 @@ The image needs to be run as privileged, because mounting doesn't work inside
 the container without that capability.
 We need to mount the LFS system image during the preparation steps.
 
+The book recommends you to check the versions of the tools of the host system.
+This Docker file has expected versions,
+but you can verify this yourself by running:
+```
+./version-check.sh
+```
 
 At your choice, you can automatically perform the steps in the LFS book by
 running script files that correspond to the chapters in the book. At least
