@@ -19,3 +19,28 @@ WORKDIR="$PWD"
 set -x
 cd $LFS/sources
 sudo -u lfs $WORKDIR/build_temporary.sh
+set +x
+
+echo ""
+echo "Stripping debug symbols and deleted unneeded files."
+
+set -x
+
+strip --strip-debug /tools/lib/*
+/usr/bin/strip --strip-unneeded /tools/{,s}bin/*
+rm -rf /tools/{,share}/{info,man,doc}
+find /tools/{lib,libexec} -name \*.la -delete
+
+set +x
+echo "Changing ownership of $LFS/tools back to root."
+set -x
+chown -R root:root $LFS/tools
+
+set +x
+echo "We have this much empty space in $LFS:"
+
+df -h $LFS
+
+echo ""
+echo "We have now successfully built the temporary system."
+echo "(End of chapter 5 of the book.)"

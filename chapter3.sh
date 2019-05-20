@@ -20,7 +20,8 @@ echo "Next, we'll download a list of packages we'll need, and then download the 
 echo "The list is from http://www.linuxfromscratch.org/lfs/view/stable-systemd/wget-list"
 echo ""
 trace_on
-wget http://www.linuxfromscratch.org/lfs/view/stable-systemd/wget-list
+wget -O - http://www.linuxfromscratch.org/lfs/view/stable-systemd/wget-list | \
+sed s/openssl.org/www.openssl.org/g > wget-list
 wget --input-file=wget-list --continue --directory-prefix=$LFS/sources
 trace_off
 
