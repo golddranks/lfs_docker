@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 shopt -s expand_aliases
 alias trace_on='set -x'

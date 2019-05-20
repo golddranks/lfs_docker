@@ -198,12 +198,17 @@ pushd binutils-2.32
 
 mkdir -v build
 cd       build
-../configure --prefix=/tools            \
-             --with-sysroot=$LFS        \
-             --with-lib-path=/tools/lib \
-             --target=$LFS_TGT          \
-             --disable-nls              \
-             --disable-werror
+
+CC=$LFS_TGT-gcc                \
+AR=$LFS_TGT-ar                 \
+RANLIB=$LFS_TGT-ranlib         \
+../configure                   \
+    --prefix=/tools            \
+    --disable-nls              \
+    --disable-werror           \
+    --with-lib-path=/tools/lib \
+    --with-sysroot
+
 make
 make install
 
