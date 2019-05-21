@@ -445,7 +445,6 @@ pushd bison-3.3.2
 ./configure --prefix=/tools
 
 make
-make check
 make install
 
 popd
