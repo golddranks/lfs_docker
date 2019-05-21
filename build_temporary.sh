@@ -302,7 +302,7 @@ echo "Installing tcl-8.6.9"
 trace_on
 
 tar -xvf tcl8.6.9-src.tar.gz
-pushd tcl8.6.9-src
+pushd tcl8.6.9
 
 cd unix
 ./configure --prefix=/tools
@@ -314,7 +314,7 @@ make install-private-headers
 ln -sv tclsh8.6 /tools/bin/tclsh
 
 popd
-rm -rf tcl8.6.9-src
+rm -rf tcl8.6.9
 
 trace_off
 
@@ -489,8 +489,6 @@ popd
 rm -rf coreutils-8.30
 
 trace_off
-
-cp -R /tools /temp_tools_after_coreutils
 
 echo ""
 echo "Installing Diffutils-3.7"

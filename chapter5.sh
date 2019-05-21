@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 echo "Chapter 5 of the book."
 echo "Next, we finally build the temporary system which we'll need for building LFS."
