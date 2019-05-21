@@ -490,7 +490,7 @@ rm -rf coreutils-8.30
 
 trace_off
 
-
+cp -R /tools /temp_tools_after_coreutils
 
 echo ""
 echo "Installing Diffutils-3.7"
