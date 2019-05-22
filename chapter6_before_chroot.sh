@@ -25,7 +25,7 @@ if [ -h $LFS/dev/shm ]; then
   mkdir -pv $LFS/$(readlink $LFS/dev/shm)
 fi
 
-cp chapter6_chroot.sh $LFS
+cp chapter6_after_chroot.sh $LFS
 
 chroot "$LFS" /tools/bin/env -i \
     HOME=/root                  \
