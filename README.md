@@ -16,7 +16,7 @@ and teaches building such a system.
 The book is freely available here: http://www.linuxfromscratch.org/
 
 Here's a rough overview what steps building LFS consists of.
-The exact steps and requirements are described the book. Note that
+The exact steps and requirements are described in the book. Note that
 the numbering here doesn't correspond to the chapters of the book!
 
 1. Start with some, working Linux system with Gnu Compiler Collection (GCC) and related build tools
